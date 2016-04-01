@@ -1,7 +1,7 @@
 /**
  * Created by Guzel on 01.03.2016.
  */
-//выпадающее меню
+//dropdown
 $(function(){
     var $header = $(".header");
     $(".header__menu-icon").on("click", function(e){
@@ -16,7 +16,7 @@ $(function(){
     });
 });
 
-//форма
+//form
 $(function(){//label
    var $input = $(".form-item input");
     var $formItem = $(".form-item");
@@ -34,7 +34,6 @@ $(function(){//textarea
     $textarea.on("input", function(){
         $message.css('display','block');
         if ($textarea.val() == "") {
-            //console.log('sss');
             $message.css('display','none');
         }
     });
@@ -48,12 +47,12 @@ $(function(){
     });
 });
 
-//скролл
+//scroll
 $(function(){
     var $footer = $('.footer');
     var $btnUp = $('#btn-up');
     $(window).on("scroll", function() {
-        if (($footer.offset().top) < (window.innerHeight+$(window).scrollTop())) {//расположение по вертикали отн-но футера
+        if (($footer.offset().top) < (window.innerHeight+$(window).scrollTop())) {//vertical location
             $btnUp.addClass('btn-up-absolute');
         } else {
             $btnUp.removeClass('btn-up-absolute');
@@ -64,7 +63,7 @@ $(function(){
             $btnUp.css('display','none');
         }
     })
-    .on("resize",scrollCalculateRight)//расположение по горизонтали
+    .on("resize",scrollCalculateRight)//location horizontally
         .trigger("resize");
     function scrollCalculateRight(){
         var $page_w = ($(window).width()-$(".container").width())/2;

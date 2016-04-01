@@ -1,21 +1,23 @@
 /**
  * Created by Guzel on 01.03.2016.
  */
-$(function(){//выпадающее меню
+//выпадающее меню
+$(function(){
     var $header = $(".header");
-    $(".header__menu-icon").on("click", function(e){//раскрытие верхнего меню
+    $(".header__menu-icon").on("click", function(e){
         e.stopPropagation();
         $header.toggleClass('open-menu');
     });
-    $(document).on("click", function(){//cкрытие верхнего меню
+    $(document).on("click", function(){
         $header.removeClass('open-menu');
     });
-    $(".dropdown").on("click", function(e){//чтобы при нажатии на dropdown он не закрывался (т.к. удаляется класс open-menu)
+    $(".dropdown").on("click", function(e){
         e.stopPropagation();
     });
 });
 
-$(function(){//форма, цвет label
+//форма
+$(function(){//label
    var $input = $(".form-item input");
     var $formItem = $(".form-item");
     $input.on("focus", function(){
@@ -26,7 +28,7 @@ $(function(){//форма, цвет label
     });
 });
 
-$(function(){//форма, textarea
+$(function(){//textarea
     var $message = $('#message');
     var $textarea = $(".form-item textarea");
     $textarea.on("input", function(){
@@ -38,35 +40,37 @@ $(function(){//форма, textarea
     });
 });
 
-$(function(){//faq-component
+//faq-component
+$(function(){
     $(".faq__question .btn").on("click", function() {
         $(this).toggleClass("open-faq");
         $(".faq__list-item").has(this).find(".faq__answer").slideToggle(500);
     });
 });
 
-$(function(){//скролл
+//скролл
+$(function(){
     var $footer = $('.footer');
     var $btnUp = $('#btn-up');
     $(window).on("scroll", function() {
-        if (($footer.offset().top) < (window.innerHeight+$(window).scrollTop())) {//расположение кнопки по вертикали отн-но футера
+        if (($footer.offset().top) < (window.innerHeight+$(window).scrollTop())) {//расположение по вертикали отн-но футера
             $btnUp.addClass('btn-up-absolute');
         } else {
             $btnUp.removeClass('btn-up-absolute');
         }
-        if ($(this).scrollTop() > 3000) {//скролл наверх, появление и исчезновение кнопки
+        if ($(this).scrollTop() > 3000) {
             $btnUp.css('display','block');
         } else {
             $btnUp.css('display','none');
         }
     })
-    .on("resize",scrollCalculateRight)//расположение кнопки по горизонтали
+    .on("resize",scrollCalculateRight)//расположение по горизонтали
         .trigger("resize");
     function scrollCalculateRight(){
         var $page_w = ($(window).width()-$(".container").width())/2;
         $btnUp.css('right',$page_w);
     }
-    $btnUp.on("click", function(){//скроллинг
+    $btnUp.on("click", function(){
         $('html, body').animate({scrollTop: 0},1000);
     });
 
